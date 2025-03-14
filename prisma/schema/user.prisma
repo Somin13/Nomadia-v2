@@ -1,0 +1,9 @@
+model User {
+    id Int @id @default(autoincrement())
+    userName String
+    email String
+    password String
+    name String?
+    lastName String?
+    profiilPicture String?
+}
