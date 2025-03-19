@@ -1,0 +1,20 @@
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/header.css">
+{% endblock %}
+
+<header>
+	<nav>
+		<ul>
+			{% if user %}
+				<li><a href="/logout">Deconnexion</a></li>
+			{% else %}
+				<li>
+					<a href="/register">Inscription</a>
+				</li>
+				<li>
+					<a href="/login">Connexion</a>
+				</li>
+			{% endif %}
+		</ul>
+	</nav>
+</header>

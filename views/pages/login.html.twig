@@ -1,0 +1,58 @@
+{% extends "../layouts/base.html.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/subscribe.css">
+{% endblock %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block main %}
+<main>
+    <section>
+    <div class='divForm'>
+        <div>
+            <h2>Formulaire d'inscription</h2>
+        </div>
+        <div>
+            <form action="/register" method="post">
+
+                <div>
+                    <label for="userName">User Name</label>
+                    <input id="userName" type="text" name="userName">
+                </div>
+                <div>
+                    <label for="email">Votre E-mail</label>
+                    <input id="email" type="text" name="email">
+                    {# {% if error %}
+                        <p>{{error.email}}</p>
+                    {% endif %} #}
+
+                    {% if error is iterable and error.email %}
+    <p>{{ error.email }}</p>
+{% elseif error is not iterable %}
+    <p>{{ error }}</p>
+{% endif %}
+
+                </div>
+                <div>
+                    <label for="password">Votre mot de passe</label>
+                    <input id="password" type="password" name="password">
+                </div>
+                <div>
+                    <label for="confirm_password">Confirmez votre mot de passe</label>
+                    <input id="confirm_password" type="password" name="confirmPassword">
+                    {% if error %}
+                        <p>{{error.confirmPassword}}</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
