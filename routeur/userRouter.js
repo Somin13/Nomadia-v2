@@ -40,19 +40,17 @@ userRouter.get('/login', async (req, res) => {
 
 userRouter.post('/login', async (req, res) => {
     try {
-        const user =await prisma.user.findUnique({
+        console.log("test");
+        const user = await prisma.user.findUnique({
             where: {
                 email: req.body.email
             }
         })
+        
         if (user) {
+            
             if (await bcrypt.compare(req.body.password, user.password)) {
-                req.session.user ={
-                    id: user.id,
-                    userName: user.userName,
-                    email: user.email,
-                    password: user.password
-                };
+                req.session.user = user
                 res.redirect('/')
             } else {
                 throw {password: "Mot de passe incorrect"}
@@ -75,13 +73,19 @@ userRouter.get("/logout", (req, res) => {
     })
 })
 
-userRouter.get('/', authguard, async (req, res) => {
-    const user = await prisma.user.findUnique({
-        where: {
-            id: req.session.user.id
-        }
-    })
-    res.render('pages/index.html.twig', {title: 'Accueil', user: req.session.user})
-})
+// userRouter.get('/', authguard, async (req, res) => {
+//     const user = await prisma.user.findUnique({
+//         where: {
+//             id: req.session.user.id
+//         }
+//     })
+//     res.render('pages/index.html.twig', {title: 'Accueil', user: req.session.user})
+// })
+
+
+userRouter.get('/', async (req, res) => {
+    res.render('pages/index.html.twig', { title: 'Accueil' });
+});
+
 
 module.exports = userRouter

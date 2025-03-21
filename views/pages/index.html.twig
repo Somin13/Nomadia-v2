@@ -1,13 +1,123 @@
-{% extends "../layouts/base.html.twig" %}
+{% extends "../layout/base.html.twig" %}
 
 {% block style %}
-	<link rel="stylesheet" href="/asset/css/style.css">
+    <link rel="stylesheet" href="/asset/css/home.css">
+	<style>
+	/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+    background: url('/asset/img/travel.jpg') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff6600;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #cc5500;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    text-align: center;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.feature img {
+    width: 80px;
+}
+
+.feature h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #555;
+}
+
+	</style>
 {% endblock %}
 
 {% block title %}
-	<title>{{ title }}</title>
+    <title>Accueil</title>
 {% endblock %}
 
 {% block main %}
-	<h1>Welcome</h1>
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur Zenova</h1>
+            <p>Explorez le monde en toute simplicité avec notre application de voyage</p>
+            <a href="/explore" class="btn">Découvrir</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <img src="/asset/img/visa.png" alt="Visa">
+            <h3>Formalités de voyage</h3>
+            <p>Toutes les informations sur les visas, devises et vaccins nécessaires.</p>
+        </div>
+
+        <div class="feature">
+            <img src="/asset/img/map.png" alt="Carte">
+            <h3>Explorer les destinations</h3>
+            <p>Découvrez des lieux uniques et préparez votre itinéraire de rêve.</p>
+        </div>
+
+        <div class="feature">
+            <img src="/asset/img/activities.png" alt="Activités">
+            <h3>Activités & Réservations</h3>
+            <p>Réservez vos excursions et activités en toute simplicité.</p>
+        </div>
+    </section>
+
+</main>
 {% endblock %}
