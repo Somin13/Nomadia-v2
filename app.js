@@ -8,6 +8,7 @@ app.use(express.static('./public'))
 app.use(express.urlencoded({extended: true}))
 app.use("/uploads", express.static('uploads'))
 
+require("dotenv").config()
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -16,6 +17,6 @@ app.use(session({
 app.use(userRouter)
 
 
-app.listen(3000,() => {
-    console.log('Ecoute sur le port 3000')
+app.listen(process.env.NODE_PORT,() => {
+    console.log('Ecoute sur le port 300')
 })
