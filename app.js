@@ -18,5 +18,5 @@ app.use(userRouter)
 
 
 app.listen(process.env.NODE_PORT,() => {
-    console.log('Ecoute sur le port 300')
+    console.log(`Ecoute sur le port ${process.env.NODE_PORT}`)
 })
